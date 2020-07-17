@@ -15,27 +15,33 @@ def Y_or_N():
 def Calculator():
     """Функция для вычисления арифметической операции"""
     while True:
-        equation = str(input("Введите уравнение\n"))
+        c = ""
+        result = []
+        equation = input("Введите уравнение\n")
         equation.replace(" ", "")
-        simvols = "1234567890()-+/*%."
+        simbols = "1234567890()-+/*%."
         try:
-            print(f'{equation} = {(eval(str(equation)))}')
             for i in equation:
-                if i not in simvols:
-                    pass
-        except NameError:
-            print("Вы ввели не верное значение ")
+                if i in simbols:
+                    result.append(i)
+            print(result,"----")
+            print((eval((c.join(result)))))
+
+
         except OverflowError:
             print("Результат арифметической операции слишком велик для представления")
         except ZeroDivisionError:
             print("Деление на ноль, не возможно")
         except SyntaxError:
             print("Возможно вы ввели синтаксически не верное условие")
+
         finally:
-                replay = Y_or_N()
-                if replay == "y":
-                    continue
-                elif replay == "n":
-                    return print("Хорошего дня")
+
+            replay = Y_or_N()
+            if replay == "y":
+                continue
+            elif replay == "n":
+                return print("Хорошего дня")
+
 Calculator()
 
